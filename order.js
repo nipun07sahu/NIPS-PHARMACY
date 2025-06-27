@@ -1,33 +1,32 @@
-updated_order_js = """
 // Save and retrieve orders from localStorage
 let currentOrder = JSON.parse(localStorage.getItem('currentOrder')) || {};
 let orders = JSON.parse(localStorage.getItem('orders')) || [];
 
-// Product list
+// Product list with images
 const productList = [
-  "Etosaid 90mg Tab",
-  "Glucon D Plain 75gm",
-  "Cyclopam Tab",
-  "Cyclopam Susp 30ml",
-  "Clavam Drops 10ml",
-  "Paraxin 500mg Cap",
-  "Pilex Tab",
-  "Ors Pow 21.8gm",
-  "Dolo Mf Syp 120ml",
-  "Macpod 100 Oral Syp 30ml",
-  "Vertistar Md 16 Tab",
-  "Vertistar Md 8mg Tab",
-  "Cefi O 200mg Tab",
-  "Tetanus Toxoid Inj 0.5ml",
-  "Figaro Olive Oil 1 Ltr",
-  "Figava Oil 500ml",
-  "Hytone Syp",
-  "Neeri Syp 100ml",
-  "Betnovate C Ont 30gm",
-  "Dispovan 5ml",
-  "Zerodol Sp Tab",
-  "Hansaplast",
-  "Tide 10mg Tab"
+  { name: "Etosaid 90mg Tab", image: "product-images/etosaid.jpg" },
+  { name: "Glucon D Plain 75gm", image: "product-images/glucon.jpg" },
+  { name: "Cyclopam Tab", image: "product-images/cyclopam.jpg" },
+  { name: "Cyclopam Susp 30ml", image: "product-images/cyclopam-susp.jpg" },
+  { name: "Clavam Drops 10ml", image: "product-images/clavam.jpg" },
+  { name: "Paraxin 500mg Cap", image: "product-images/paraxin.jpg" },
+  { name: "Pilex Tab", image: "product-images/pilex.jpg" },
+  { name: "Ors Pow 21.8gm", image: "product-images/ors.jpg" },
+  { name: "Dolo Mf Syp 120ml", image: "product-images/dolo.jpg" },
+  { name: "Macpod 100 Oral Syp 30ml", image: "product-images/macpod.jpg" },
+  { name: "Vertistar Md 16 Tab", image: "product-images/vertistar16.jpg" },
+  { name: "Vertistar Md 8mg Tab", image: "product-images/vertistar8.jpg" },
+  { name: "Cefi O 200mg Tab", image: "product-images/cefi.jpg" },
+  { name: "Tetanus Toxoid Inj 0.5ml", image: "product-images/tetanus.jpg" },
+  { name: "Figaro Olive Oil 1 Ltr", image: "product-images/figaro.jpg" },
+  { name: "Figava Oil 500ml", image: "product-images/figava.jpg" },
+  { name: "Hytone Syp", image: "product-images/hytone.jpg" },
+  { name: "Neeri Syp 100ml", image: "product-images/neeri.jpg" },
+  { name: "Betnovate C Ont 30gm", image: "product-images/betnovate.jpg" },
+  { name: "Dispovan 5ml", image: "product-images/dispovan.jpg" },
+  { name: "Zerodol Sp Tab", image: "product-images/zerodol.jpg" },
+  { name: "Hansaplast", image: "product-images/hansaplast.jpg" },
+  { name: "Tide 10mg Tab", image: "product-images/tide.jpg" }
 ];
 
 // Populate product dropdown if on the order page
@@ -35,9 +34,17 @@ if (document.getElementById('productSelect')) {
   const productSelect = document.getElementById('productSelect');
   productList.forEach(product => {
     const option = document.createElement('option');
-    option.value = product;
-    option.textContent = product;
+    option.value = product.name;
+    option.textContent = product.name;
     productSelect.appendChild(option);
+  });
+
+  // Show product image when selected
+  productSelect.addEventListener('change', function () {
+    const selectedProduct = productList.find(p => p.name === this.value);
+    if (selectedProduct) {
+      document.getElementById('productImage').src = selectedProduct.image;
+    }
   });
 }
 
@@ -68,7 +75,7 @@ if (document.getElementById('orderForm')) {
 
 // Payment Page
 if (document.getElementById('paymentDetails')) {
-  document.getElementById('paymentDetails').innerText = `Pay ₹${currentOrder.quantity * 100} for ${currentOrder.product}`;
+  document.getElementById('paymentDetails').innerText = `Pay ?${currentOrder.quantity * 100} for ${currentOrder.product}`;
   document.getElementById('payButton').addEventListener('click', function() {
     finalizeOrder();
     window.location.href = 'index.html';
@@ -108,11 +115,3 @@ function displayOrders() {
     container.appendChild(div);
   });
 }
-"""
-
-# Save the updated order.js file
-order_js_path = '/mnt/data/order.js'
-with open(order_js_path, 'w') as file:
-    file.write(updated_order_js)
-
-order_js_path
