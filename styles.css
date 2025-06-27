@@ -1,0 +1,88 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f7f8;
+  color: #333;
+}
+
+header {
+  background-color: #4CAF50;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header h1 {
+  color: white;
+  margin: 0;
+}
+
+.logo {
+  height: 50px;
+  border-radius: 50%;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 10px;
+  padding: 6px 12px;
+  border-radius: 4px;
+}
+
+nav a.active-link {
+  background-color: white;
+  color: #4CAF50;
+  font-weight: bold;
+}
+
+main {
+  padding: 2rem;
+}
+
+form label {
+  display: block;
+  margin: 10px 0;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+.animated-button {
+  transition: transform 0.2s ease-in-out;
+}
+
+.animated-button:hover {
+  transform: scale(1.05);
+}
+
+.fade-in {
+  animation: fadeIn 1s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.orderCard {
+  border: 1px solid #ddd;
+  background-color: white;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
