@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medical Store - Home</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <img src="logo.png" alt="Medical Store Logo" class="logo">
+    <h1>MAA JHARBANDHALIAN MEDICINE STORE</h1>
+    <nav>
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="admin.html" class="nav-link">Admin</a>
+    </nav>
+  </header>
+
+  <main class="fade-in">
+    <h2>Place Your Order</h2>
+    <form id="orderForm">
+      <label>Name: <input type="text" name="name" required></label><br>
+      <label>Phone: <input type="text" name="phone" required></label><br>
+      <label>Address: <input type="text" name="address" required></label><br>
+      <label>Product: <input type="text" name="product" required></label><br>
+      <label>Quantity: <input type="number" name="quantity" min="1" required></label><br>
+      <label>Payment Method:
+        <select name="paymentMethod" required>
+          <option value="">Select</option>
+          <option value="Online Payment">Online Payment</option>
+          <option value="COD">Cash on Delivery</option>
+        </select>
+      </label><br>
+      <button type="submit" class="animated-button">Proceed to Payment</button>
+    </form>
+    <div id="notification"></div>
+  </main>
+
+  <script src="order.js"></script>
+</body>
+</html>
